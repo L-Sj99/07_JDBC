@@ -10,7 +10,7 @@ public class JDBCExample5 {
 		
 		// 아이디, 비밀번호, 이름을 입력 받아 TB_USER 테이블에 삽입하기
 		
-		/* 1. JCBC 객체 참조 변수 선언 */
+		/* 1. JDBC 객체 참조 변수 선언 */
 		Connection conn = null;
 		
 		/* java.sql.PreparedStatement (준비된 Statement)
