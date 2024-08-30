@@ -27,10 +27,43 @@
 		WHERE USER_ID = ?
 		AND USER_PW = ?		
 	</entry>
-	<entry key="selectAll">
+	
+	<!-- 사용자 목록 조회 -->
+	<entry key = "selectAll">
 		SELECT USER_NO, USER_ID, USER_PW, USER_NAME,
 				TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일"') ENROLL_DATE
 		FROM TB_USER
 		ORDER BY USER_NO ASC
+	</entry>
+	
+	<!-- 검색어가 아이디에 포함된 사용자 조회 -->
+	<entry key = "searchId">
+		SELECT USER_NO, USER_ID, USER_PW, USER_NAME,
+				TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일"') ENROLL_DATE
+		FROM TB_USER
+		WHERE USER_ID LIKE ?
+		ORDER BY USER_NO ASC
+	</entry>
+	
+	<!-- 사용자 상세조회 -->
+	<entry key = "userNo">
+		SELECT USER_NO, USER_ID, USER_PW, USER_NAME,
+							TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일"') ENROLL_DATE
+		FROM TB_USER
+		WHERE USER_NO =?
+	</entry>
+	
+	<!-- 사용자 삭제하기 -->
+	<entry key = "deleteUser">
+		DELETE
+		FROM TB_USER
+		WHERE USER_NO = ?
+	</entry>
+	
+	<!-- 사용자 삭제하기 -->
+	<entry key = "updateUser">
+		UPDATE TB_USER
+		SET USER_PW = ?, USER_NAME = ?
+		WHERE USER_NO = ?
 	</entry>
 </properties>

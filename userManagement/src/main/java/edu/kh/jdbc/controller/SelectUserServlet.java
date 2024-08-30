@@ -12,17 +12,18 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/selectAll")
-public class SelectAllServlet extends HttpServlet{
-	@Override
+@WebServlet("/selectUser")
+public class SelectUserServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		UserService service = new UserServiceImpl();
-		List<User> userList;
+		int userNo = Integer.parseInt(req.getParameter("userNo"));
 		try {
-			userList = service.selectAll();
-			req.setAttribute("userList", userList);
-			String path = "/WEB-INF/views/selectAll.jsp";
-			req.getRequestDispatcher(path).forward(req, resp); 
+			UserService service = new UserServiceImpl();
+			User user= service.selectUser(userNo);
+			
+			req.setAttribute("user", user);
+			
+			String path = "/WEB-INF/views/selectUser.jsp";
+			req.getRequestDispatcher(path).forward(req, resp);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
