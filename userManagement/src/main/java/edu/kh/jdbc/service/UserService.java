@@ -61,7 +61,4 @@ public interface UserService {
 	 * @throws Exception
 	 */
 	int updateUser(User user) throws Exception;
-
-
-
 }

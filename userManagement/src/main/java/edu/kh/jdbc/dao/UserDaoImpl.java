@@ -38,7 +38,7 @@ public class UserDaoImpl implements UserDao{
 			e.printStackTrace();
 		}
 	}
-
+	
 	@Override
 	public int insertUser(Connection conn, User user) throws Exception {
 		// 1. 결과 저장용 변수 선언
@@ -219,5 +219,4 @@ public class UserDaoImpl implements UserDao{
 		}
 		return result;
 	}
-	
 }

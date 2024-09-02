@@ -69,6 +69,4 @@ public interface UserDao {
 	 * @throws Exception
 	 */
 	int updateUser(Connection conn, User user) throws Exception;
-	
-
 }

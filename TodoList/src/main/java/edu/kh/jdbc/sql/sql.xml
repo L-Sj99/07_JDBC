@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<!--  driver.xml 파일 : DB 연결 정보를 작성하는 외부 파일
+		entry : K, V 한 쌍을 나타내는 단위
+		<entry key = "K"> V </entry> 
+		XML = 마크업 언어 -->
+	
+	<!-- 사용자 등록 -->	
+	<entry key="selvlet">
+		SELECT LIST_NO "번호", LIST_TITLE "할 일 제목", LIST_CHECK "완료 여부", TO_CHAR(ENROLL_DATE, 'YYYY-MM-DD HH24:MI:SS') "등록 날짜"
+		FROM TODO_LIST
+		WHERE LIST_NO > 0
+		ORDER BY LIST_NO ASC;
+	</entry>
+	<!-- 완료된 할 일 개수 조회 -->
+	<entry key="getCompleteCount">
+		SELECT COUNT(*) 
+		FROM TB_TODO
+		WHERE LIST_NO > 0
+		AND "등록 날짜" = 1
+	</entry>
+		<!-- 할 일 추가 -->
+	<entry key="todoAdd">
+		INSERT INTO TODO_LIST
+		VALUES(SEQ_TODO_NO.NEXTVAL, ?, ?, DEFAULT, DEFAULT)
+	</entry>
+	
+	
+	<!-- 할 일 상세 조회 -->
+	<entry key="todoDetailView">
+		SELECT LIST_NO, LIST_TITLE, LIST_CHECK,	LIST_COMPLETE, 
+			TO_CHAR(REG_DATE, 'YYYY-MM-DD HH24:MI:SS') ENROLL_DATE
+		FROM TODO_LIST
+		WHERE LIST_NO = ?
+	</entry>
+	
+	
+	<!-- 완료 여부 변경 -->
+	<entry key="todoComplete">
+		UPDATE TODO_LIST
+		SET
+			LIST_COMPLETE = 
+				DECODE(LIST_COMPLETE, 0, 1, 0)
+		WHERE 
+			LIST_NO = ?
+	</entry>
+	
+	
+	<!-- 할 일 수정-->
+	<entry key="todoUpdate">
+		UPDATE TODO_LIST
+		SET
+			LIST_TITLE = ?,
+			LIST_CHECK = ?
+		WHERE 
+			TODO_NO = ?
+	</entry>
+	
+	
+	<!-- 할 일 삭제-->
+	<entry key="todoDelete">
+		DELETE 
+		FROM TODO_LIST
+		WHERE LIST_NO = ?
+	</entry>
+
+</properties>
