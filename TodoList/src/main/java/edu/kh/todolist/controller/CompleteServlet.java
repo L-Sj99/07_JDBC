@@ -20,13 +20,13 @@ public class CompleteServlet extends HttpServlet{
 		try {
 			// 할 일 여부를 변경하는 서비스 호출 후 결과 반환 받기
 			TodoListService service = new TodoListServiceImpl();
-			boolean result = service.todoComplete(todoNo);
+			int result = service.todoComplete(todoNo);
 			
 			// session scope 객체 얻어오기
 			HttpSession session = req.getSession();
 			
 			// 변경 성공 시 -> 원래 보고있던 상세 페이지로 redirect
-			if(result) {
+			if(result > 0) {
 				session.setAttribute("message", "완료 여부가 변경되었습니다.");
 				resp.sendRedirect("/todo/detail?todoNo=" + todoNo);
 				return;

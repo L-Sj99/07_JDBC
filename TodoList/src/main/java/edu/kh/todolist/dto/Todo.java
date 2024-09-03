@@ -17,6 +17,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Builder
 public class Todo { 
+	private int todoNo;
 	private String title;
 	private String detail;
 	private boolean complete;

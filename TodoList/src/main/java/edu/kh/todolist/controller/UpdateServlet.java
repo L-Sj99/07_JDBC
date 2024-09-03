@@ -63,7 +63,7 @@ public class UpdateServlet extends HttpServlet{
 		try {
 			TodoListService service = new TodoListServiceImpl();
 			
-			boolean result = service.todoUpdate(todoNo, title, detail);
+			int result = service.todoUpdate(todoNo, title, detail);
 			
 			// 수정 성공 시
 			// 상세 조회 페이지로 redirect 후
@@ -76,7 +76,7 @@ public class UpdateServlet extends HttpServlet{
 			String url = null;
 			String message = null;
 			
-			if(result) { // 성공
+			if(result > 0) { // 성공
 				url = "/todo/detail?todoNo=" + todoNo;
 				message = "수정 되었습니다";
 				

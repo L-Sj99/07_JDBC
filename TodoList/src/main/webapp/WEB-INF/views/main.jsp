@@ -44,7 +44,7 @@
           <%-- 제목 클릭 시 
           인덱스 번호를 이용하여  todoList의 인덱스 번째 요소 내용 조회하기
           (쿼리스트링 이용 : 주소?K=V&K=V&....) --%>
-            <a href="/todo/detail?index=${vs.todoNo}">${todo.title}</a>
+            <a href="/todo/detail?todoNo=${vs.todoNo}">${todo.title}</a>
           </td>
           <th>
             <c:if test="${todo.complete}" > O </c:if>

@@ -17,20 +17,20 @@ public class DeleteServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int todoNo = Integer.parseInt(req.getParameter("todoNo"));
 		try {
-			TodoListService service = new TodoListServiceImpl();
+TodoListService service = new TodoListServiceImpl();
 			
 			// 서비스 호출 후 결과 반환 받기
-			String title = service.todoDelete(todoNo);
+			int result = service.todoDelete(todoNo);
 			
 			// 삭제 성공 시 -> 메인 페이지(/) redirect후 "OOO"이 삭제 되었습니다.
 			
 			// 삭제 실패 시 == index가 잘못 됨 -> "해당 index번째 todo가 존재하지 않습니다." alert()
 			HttpSession session = req.getSession();
-			String result = null;
-			if(title != null) result = title + " 할 일이 삭제되었습니다.";
-			else result = "해당 index번째 todo가 존재하지 않습니다.";
+			String message = null;
+			if(result > 0) 	message = "할 일이 삭제 되었습니다";
+			else			message = "todo가 존재하지 않습니다";
 			
-			session.setAttribute("message", result);
+			session.setAttribute("message", message);
 			
 			resp.sendRedirect("/");
 		} catch (Exception e) {
