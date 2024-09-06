@@ -1,5 +1,6 @@
 package edu.kh.todolist.service;
-import static edu.kh.jdbc.common.JDBCTemplate.*;
+import static edu.kh.todolist.common.JDBCTemplate.*;
+
 import java.sql.Connection;
 import java.util.HashMap;
 import java.util.List;

@@ -1,5 +1,6 @@
 package edu.kh.todolist.dao;
-import static edu.kh.jdbc.common.JDBCTemplate.*;
+import static edu.kh.todolist.common.JDBCTemplate.*;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -42,8 +43,7 @@ public class TodoListDaoImpl implements TodoListDao{
 	
 	public TodoListDaoImpl() {
 		try {
-			String filePath = 
-					TodoListDaoImpl.class
+			String filePath = TodoListDaoImpl.class
 					.getResource("/edu/kh/todolist/sql/sql.xml").getPath();
 			
 			// 지정된 경로의 XML 파일 내용을 읽어와
@@ -78,7 +78,7 @@ public class TodoListDaoImpl implements TodoListDao{
 							.todoNo(rs.getInt("LIST_NO"))
 							.title(rs.getString("LIST_TITLE"))
 							.complete(complete)
-							.regDate(rs.getString("ENROLL_DATE"))
+							.enrollDate(rs.getString("ENROLL_DATE"))
 							.build();
 				
 				todoList.add(todo);
@@ -160,7 +160,7 @@ public class TodoListDaoImpl implements TodoListDao{
 							.title(rs.getString("LIST_TITLE"))
 							.detail(rs.getString("LIST_CHECK"))
 							.complete(complete)
-							.regDate(rs.getString("ENROLL_DATE"))
+							.enrollDate(rs.getString("ENROLL_DATE"))
 							.build();
 			}
 			

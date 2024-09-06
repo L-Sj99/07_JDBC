@@ -1,5 +1,5 @@
 package edu.kh.todolist.service;
-import static edu.kh.jdbc.common.JDBCTemplate.*;
+import static edu.kh.todolist.common.JDBCTemplate.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

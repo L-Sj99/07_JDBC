@@ -21,7 +21,5 @@ public class Todo {
 	private String title;
 	private String detail;
 	private boolean complete;
-	private LocalDateTime regDate;
-	
-	
+	private String enrollDate;
 }

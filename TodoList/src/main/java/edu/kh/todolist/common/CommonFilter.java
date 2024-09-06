@@ -1,4 +1,4 @@
-package edu.kh.jdbc.common;
+package edu.kh.todolist.common;
 
 import java.io.IOException;
 import java.util.Arrays;
